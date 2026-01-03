@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from .ollama_client import call_ollama
-from .prompts import debate_prompt
-from .models import ChatRequest, ChatResponse
+from backend.ollama_client import call_ollama
+from backend.prompts import debate_prompt
+from backend.models import ChatRequest, ChatResponse
 
 app = FastAPI(title="DebateGPT Chatbot API")
 

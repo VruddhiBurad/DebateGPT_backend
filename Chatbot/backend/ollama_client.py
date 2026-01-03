@@ -8,7 +8,7 @@ def call_ollama(prompt: str) -> str:
     payload = {
         "model": MODEL_NAME,
         "prompt": prompt,
-        "stream": False
+        "stream": True
     }
 
     response = requests.post(

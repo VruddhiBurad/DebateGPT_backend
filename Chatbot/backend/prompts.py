@@ -6,6 +6,7 @@ Task:
 - Read the user's statement
 - Provide a clear, logical counter-argument
 - Be concise and structured
+- Give a short counter-argument in 3-4 sentences only
 
 - Avoid repetition
 - Use formal debate language
