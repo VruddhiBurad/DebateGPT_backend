@@ -1,12 +1,47 @@
 from fastapi import FastAPI
-from backend.ollama_client import call_ollama
-from backend.prompts import debate_prompt
-from backend.models import ChatRequest, ChatResponse
+from pydantic import BaseModel
+import requests
+import json
 
-app = FastAPI(title="DebateGPT Chatbot API")
+app = FastAPI()   # 🔴 THIS LINE IS REQUIRED
 
-@app.post("/chat", response_model=ChatResponse)
-def chat_endpoint(request: ChatRequest):
-    prompt = debate_prompt(request.message)
-    reply = call_ollama(prompt)
-    return ChatResponse(reply=reply)
+OLLAMA_URL = "http://localhost:11434/api/generate"
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/chat")
+def chat(req: ChatRequest):
+    payload = {
+        "model": "phi3",
+        "prompt": req.message,
+        "stream": True
+    }
+
+    try:
+        response = requests.post(
+            OLLAMA_URL,
+            headers={"Content-Type": "application/json"},
+            data=json.dumps(payload),
+            stream=True,
+            timeout=300
+        )
+
+        full_response = ""
+
+        for line in response.iter_lines(decode_unicode=True):
+            if line:
+                data = json.loads(line)
+                if "response" in data:
+                    full_response += data["response"]
+                if data.get("done"):
+                    break
+
+        if not full_response.strip():
+            return {"reply": "⚠️ Model returned no response."}
+
+        return {"reply": full_response.strip()}
+
+    except Exception as e:
+        print("Backend error:", e)
+        return {"reply": "Sorry, I couldn't process that request."}
