@@ -21,7 +21,7 @@ print("\nType 'exit' to stop.\n")
 # -----------------------------
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 safe_topic = topic.replace(" ", "_")
-filename = f"debate_{safe_topic}_{timestamp}.txt"
+filename = f"chatbot_debate_transcript.txt"
 
 log_file = open(filename, "w", encoding="utf-8")
 log_file.write("=== DEBATE GPT TRANSCRIPT ===\n")
@@ -110,3 +110,4 @@ log_file.close()
 
 print(f"\n📄 Debate saved in file: {filename}")
 print("Thank you for using Debate GPT!")
+ 
