@@ -8,6 +8,8 @@ import os
 import keyboard
 import uuid
 
+
+
 # -----------------------------
 # CONFIG (NO HARD-CODED PATHS)
 # -----------------------------
@@ -140,7 +142,8 @@ def run_stt_session():
             break
 
     # SAVE TRANSCRIPT
-    filename = "debate_transcript.txt"
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(BASE_DIR, "debate_transcript.txt")
 
     with open(filename, "w", encoding="utf-8") as f:
         f.write(f"========== FULL DEBATE ==========\n")

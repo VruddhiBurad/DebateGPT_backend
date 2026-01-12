@@ -9,8 +9,8 @@ import language_tool_python
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
 
-RAW_TRANSCRIPT_FILE = os.path.join(PROJECT_ROOT, "C://Users//siddh//OneDrive//Desktop//Documents//megaproject//debate_transcript.txt")
-FINAL_OUTPUT_FILE = os.path.join(PROJECT_ROOT, "debate_final_analysis.txt")
+RAW_TRANSCRIPT_FILE = os.path.join(BASE_DIR, "debate_transcript.txt")
+FINAL_OUTPUT_FILE = os.path.join(BASE_DIR, "debate_final_analysis.txt")
 
 
 
