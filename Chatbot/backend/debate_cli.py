@@ -46,7 +46,7 @@ def show_thinking():
 # -----------------------------
 while True:
     print("\n" + "-" * 50)
-    msg = input("🧑 Your argument:\n> ")
+    msg = input(" Your argument:\n> ")
     if msg.lower() == "exit":
         break
 
@@ -98,7 +98,7 @@ Now generate a single-paragraph debate response that supports the user's stance.
 
     # Show with spacing
     print("\n" + "=" * 50)
-    print("🤖 Debate GPT says:\n")
+    print(" Debate GPT says:\n")
     print(bot_reply)
     print("=" * 50 + "\n")
 
