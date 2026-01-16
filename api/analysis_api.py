@@ -1,29 +1,29 @@
 from fastapi import APIRouter, HTTPException
-from Whispercpp.aly import analyze_debate
+from Analyzer.aly import analyze_debate
 
-router = APIRouter(prefix="/analysis", tags=["Analysis"])
+router = APIRouter(prefix="/analyze", tags=["Analysis"])
 
 
-@router.post("/run")
-def run_analysis():
+@router.post("/stt")
+def analyze_stt():
     """
-    Runs the debate analyzer (aly.py) and returns the result.
+    Analyze STT debate transcript
     """
     try:
-        result = analyze_debate()
-        return {
-            "status": "success",
-            "data": result
-        }
-
-    except FileNotFoundError:
-        raise HTTPException(
-            status_code=404,
-            detail="debate_transcript.txt not found. Run STT first."
-        )
-
+        result = analyze_debate(mode="stt")
+        return result
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/chatbot")
+def analyze_chatbot():
+    """
+    Analyze chatbot debate transcript
+    """
+    try:
+        result = analyze_debate(mode="chatbot")
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

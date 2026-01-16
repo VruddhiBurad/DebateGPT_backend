@@ -6,12 +6,15 @@ import os
 # -------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
-#for stt model data
-INPUT_FILE = os.path.join(BASE_DIR, "debate_final_analysis.txt")
-OUTPUT_FILE = os.path.join(BASE_DIR, "debate_final_winner.txt")
-#for chatbot file
-INPUT_FILE = os.path.join(BASE_DIR, "chatbot_final_analysis.txt")
-OUTPUT_FILE = os.path.join(BASE_DIR, "chatbot_final_winner.txt")
+
+# STT files
+INPUT_FILE_STT = os.path.join(BASE_DIR, "debate_final_analysis.txt")
+OUTPUT_FILE_STT = os.path.join(BASE_DIR, "debate_final_winner.txt")
+
+# Chatbot files
+INPUT_FILE_CHATBOT = os.path.join(BASE_DIR, "chatbot_final_analysis.txt")
+OUTPUT_FILE_CHATBOT = os.path.join(BASE_DIR, "chatbot_final_winner.txt")
+
 
 # -------------------------------
 # SCORING RULES
@@ -30,16 +33,28 @@ ARGUMENT_SCORE = {
 }
 
 
-# -------------------------------
-# MAIN FUNCTION
-# -------------------------------
-def run_winner_analysis():
+# =====================================================
+# MAIN FUNCTION (DUAL MODE)
+# =====================================================
+def run_winner_analysis(mode: str = "stt"):
     """
-    Reads debate_final_analysis.txt,
-    calculates scores,
-    writes debate_final_winner.txt,
-    returns result summary.
+    mode:
+      - 'stt'     → analyze debate_final_analysis.txt
+      - 'chatbot' → analyze chatbot_final_analysis.txt
     """
+
+    # -------------------------------
+    # SELECT FILES BASED ON MODE
+    # -------------------------------
+    if mode == "chatbot":
+        INPUT_FILE = INPUT_FILE_CHATBOT
+        OUTPUT_FILE = OUTPUT_FILE_CHATBOT
+    else:
+        INPUT_FILE = INPUT_FILE_STT
+        OUTPUT_FILE = OUTPUT_FILE_STT
+
+    if not os.path.exists(INPUT_FILE):
+        raise FileNotFoundError(f"Input file not found: {INPUT_FILE}")
 
     # -------------------------------
     # READ FILE
@@ -117,6 +132,7 @@ def run_winner_analysis():
         f.write(f"🏆 FINAL RESULT: {winner}\n")
 
     return {
+        "mode": mode,
         "winner": winner,
         "scores": {
             "User 1": user1_score,
@@ -127,10 +143,20 @@ def run_winner_analysis():
 
 
 # -------------------------------
-# CLI MODE (optional)
+# CLI MODE
 # -------------------------------
 if __name__ == "__main__":
-    result = run_winner_analysis()
+    print("Choose mode:")
+    print("1 → STT Debate")
+    print("2 → Chatbot Debate")
+
+    choice = input("Enter choice (1/2): ").strip()
+
+    if choice == "2":
+        result = run_winner_analysis(mode="chatbot")
+    else:
+        result = run_winner_analysis(mode="stt")
+
     print("✅ Winner analysis completed")
     print("🏆 Winner:", result["winner"])
     print("📄 Output file:", result["output_file"])

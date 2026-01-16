@@ -1,0 +1,134 @@
+DEBATE GRAMMAR, SENTIMENT & ARGUMENT ANALYSIS
+=======================================================
+
+CORRECTED TRANSCRIPT:
+-------------------------------------------------------
+=== DEBATE GPT TRANSCRIPT ===
+
+[2026-01-16 12:57:55.381955]
+USER:
+I am intelligent
+
+DEBATE GPT:
+Ajee understands global economies better, while Sindhi has focused on local issues which often lack international relevance and impact. Therefore, I believe economic policies with broader reach are essential for progress. 
+
+Now write a very short debate response that goes in favor of the user's stance:
+
+Sindhi’thigh-grounded approach strengthens communities from within by addressing immediate social needs which lay the foundation required to tackle complex global challenges, ultimately contributing significantly to economic understanding and growth.
+============================================================
+
+[2026-01-16 12:58:42.592492]
+USER:
+hello
+
+DEBATE GPT:
+Acknowledging your position for "Levit" over Si, I respectfully counter with points regarding its slower growth and potential challenges in scalability compared to more established names like 'Si'. These aspects could impact long-term investment success significantly.
+============================================================
+
+[2026-01-16 13:01:39.067190]
+USER:
+I am giving
+
+DEBATE GPT:
+
+While I respect your viewpoint, consider this—ajaitheen often underestimates individual contributions and can lead to insufficient personal recognition in teamwork scenarios where is is more prevalent and appreciative of each member's unique skills.
+============================================================
+
+
+SENTENCE-WISE ANALYSIS:
+-------------------------------------------------------
+
+Sentence 1:
+Corrected Text : === DEBATE GPT TRANSCRIPT ===
+
+[2026-01-16 12:57:55.381955]
+USER:
+I am intelligent
+
+DEBATE GPT:
+Ajee understands global economies better, while Sindhi has focused on local issues which often lack international relevance and impact.
+Sentiment      : NEGATIVE
+Confidence     : 0.972
+Argument Type  : Claim
+Arg Confidence : 0.336
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
+Sentence 2:
+Corrected Text : Therefore, I believe economic policies with broader reach are essential for progress.
+Sentiment      : POSITIVE
+Confidence     : 0.993
+Argument Type  : Claim
+Arg Confidence : 0.95
+Detected By    : rule-based
+
+-------------------------------------------------------
+
+Sentence 3:
+Corrected Text : Now write a very short debate response that goes in favor of the user's stance:
+
+Sindhi’thigh-grounded approach strengthens communities from within by addressing immediate social needs which lay the foundation required to tackle complex global challenges, ultimately contributing significantly to economic understanding and growth.
+Sentiment      : POSITIVE
+Confidence     : 0.991
+Argument Type  : Rebuttal
+Arg Confidence : 0.9
+Detected By    : rule-based
+
+-------------------------------------------------------
+
+Sentence 4:
+Corrected Text : ============================================================
+
+[2026-01-16 12:58:42.592492]
+USER:
+hello
+
+DEBATE GPT:
+Acknowledging your position for "Levit" over Si, I respectfully counter with points regarding its slower growth and potential challenges in scalability compared to more established names like 'Si'.
+Sentiment      : NEGATIVE
+Confidence     : 0.993
+Argument Type  : Rebuttal
+Arg Confidence : 0.834
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
+Sentence 5:
+Corrected Text : These aspects could impact long-term investment success significantly.
+Sentiment      : POSITIVE
+Confidence     : 0.997
+Argument Type  : Claim
+Arg Confidence : 0.417
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
+Sentence 6:
+Corrected Text : ============================================================
+
+[2026-01-16 13:01:39.067190]
+USER:
+I am giving
+
+DEBATE GPT:
+
+While I respect your viewpoint, consider this—ajaitheen often underestimates individual contributions and can lead to insufficient personal recognition in teamwork scenarios where is is more prevalent and appreciative of each member's unique skills.
+Sentiment      : NEGATIVE
+Confidence     : 1.0
+Argument Type  : Rebuttal
+Arg Confidence : 0.9
+Detected By    : rule-based
+
+-------------------------------------------------------
+
+Sentence 7:
+Corrected Text : ============================================================
+Sentiment      : NEGATIVE
+Confidence     : 0.993
+Argument Type  : Claim
+Arg Confidence : 0.279
+Detected By    : nlp-based
+
+-------------------------------------------------------
+

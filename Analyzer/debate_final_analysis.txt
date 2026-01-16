@@ -1,0 +1,55 @@
+DEBATE GRAMMAR, SENTIMENT & ARGUMENT ANALYSIS
+=======================================================
+
+CORRECTED TRANSCRIPT:
+-------------------------------------------------------
+========== FULL DEBATE ==========
+Topic: ajee vs is
+
+User 1:
+Hello, I'm Golden.
+
+User 2:
+Welcome to the debate.
+
+=================================
+
+
+SENTENCE-WISE ANALYSIS:
+-------------------------------------------------------
+
+Sentence 1:
+Corrected Text : ========== FULL DEBATE ==========
+Topic: ajee vs is
+
+User 1:
+Hello, I'm Golden.
+Sentiment      : POSITIVE
+Confidence     : 0.848
+Argument Type  : Rebuttal
+Arg Confidence : 0.363
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
+Sentence 2:
+Corrected Text : User 2:
+Welcome to the debate.
+Sentiment      : POSITIVE
+Confidence     : 0.999
+Argument Type  : Claim
+Arg Confidence : 0.398
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
+Sentence 3:
+Corrected Text : =================================
+Sentiment      : NEGATIVE
+Confidence     : 0.991
+Argument Type  : Claim
+Arg Confidence : 0.286
+Detected By    : nlp-based
+
+-------------------------------------------------------
+
