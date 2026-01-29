@@ -99,9 +99,9 @@ if __name__ == "__main__":
         with open(FINAL_FILE, "w", encoding="utf-8") as dest:
             dest.write(content)
 
-        print("\n📄 Debate saved in project root as:")
+        print("\nDebate saved in project root as:")
         print(FINAL_FILE)
     else:
-        print("\n⚠️ No debate log found to save.")
+        print("\n No debate log found to save.")
 
 
