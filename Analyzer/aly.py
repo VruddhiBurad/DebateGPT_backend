@@ -68,25 +68,25 @@ def analyze_debate(mode: str = "stt"):
         raise FileNotFoundError(f"Input file not found: {RAW_FILE}")
 
     # -------------------------------
-    # 1️⃣ READ RAW TRANSCRIPT
+    # 1.READ RAW TRANSCRIPT
     # -------------------------------
     with open(RAW_FILE, "r", encoding="utf-8") as f:
         raw_text = f.read()
 
     # -------------------------------
-    # 2️⃣ GRAMMAR CORRECTION
+    # 2.GRAMMAR CORRECTION
     # -------------------------------
     tool = language_tool_python.LanguageTool("en-US")
     matches = tool.check(raw_text)
     corrected_text = language_tool_python.utils.correct(raw_text, matches)
 
     # -------------------------------
-    # 3️⃣ SENTENCE SEGMENTATION
+    # 3.SENTENCE SEGMENTATION
     # -------------------------------
     sentences = nltk.sent_tokenize(corrected_text)
 
     # -------------------------------
-    # 4️⃣ SENTIMENT ANALYZER
+    # 4.SENTIMENT ANALYZER
     # -------------------------------
     sentiment_analyzer = pipeline(
         "sentiment-analysis",
@@ -94,7 +94,7 @@ def analyze_debate(mode: str = "stt"):
     )
 
     # =====================================================
-    # 5️⃣ ARGUMENT TYPE DETECTION (HYBRID SYSTEM)
+    # 5.ARGUMENT TYPE DETECTION (HYBRID SYSTEM)
     # =====================================================
 
     # ---------- RULE BASED ----------
@@ -132,7 +132,7 @@ def analyze_debate(mode: str = "stt"):
 
 
     # -------------------------------
-    # 6️⃣ WRITE FINAL OUTPUT
+    # 6.WRITE FINAL OUTPUT
     # -------------------------------
     with open(FINAL_FILE, "w", encoding="utf-8") as out:
         out.write("DEBATE GRAMMAR, SENTIMENT & ARGUMENT ANALYSIS\n")
@@ -188,4 +188,4 @@ if __name__ == "__main__":
         result = analyze_debate(mode="stt")
 
     print("✅", result["message"])
-    print("📄 Output:", result["output_file"])
+    print(" Output:", result["output_file"])
