@@ -12,6 +12,9 @@ data class AnalysisUiState(
     val isLoading: Boolean = false,
     val analysisSuccess: Boolean = false,
     val sentencesAnalyzed: Int? = null,
+    val analysisText: String? = null,
+    val stats: Map<String, Map<String, Int>>? = null,
+    val marking: Map<String, com.debategpt.app.data.MarkingPoints>? = null,
     val error: String? = null
 )
 
@@ -40,7 +43,10 @@ class AnalysisViewModel : ViewModel() {
                     _analysisState.value = _analysisState.value.copy(
                         isLoading = false,
                         analysisSuccess = true,
-                        sentencesAnalyzed = body?.sentences_analyzed
+                        sentencesAnalyzed = body?.sentences_analyzed,
+                        analysisText = body?.analysis_text,
+                        stats = body?.stats,
+                        marking = body?.marking
                     )
                 } else {
                     _analysisState.value = _analysisState.value.copy(
@@ -67,7 +73,10 @@ class AnalysisViewModel : ViewModel() {
                     _analysisState.value = _analysisState.value.copy(
                         isLoading = false,
                         analysisSuccess = true,
-                        sentencesAnalyzed = body?.sentences_analyzed
+                        sentencesAnalyzed = body?.sentences_analyzed,
+                        analysisText = body?.analysis_text,
+                        stats = body?.stats,
+                        marking = body?.marking
                     )
                 } else {
                     _analysisState.value = _analysisState.value.copy(

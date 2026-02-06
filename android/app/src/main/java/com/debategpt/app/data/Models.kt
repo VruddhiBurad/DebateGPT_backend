@@ -13,7 +13,19 @@ data class AnalyzeResponse(
     val mode: String,
     val message: String,
     val output_file: String?,
-    val sentences_analyzed: Int?
+    val sentences_analyzed: Int?,
+    // Added by backend: full contents of debate_final_analysis.txt / chatbot_final_analysis.txt
+    val analysis_text: String? = null,
+    // Added by backend: per-user counts (sentiment + argument types)
+    val stats: Map<String, Map<String, Int>>? = null,
+    // Added by backend: marking points (same weights as winner)
+    val marking: Map<String, MarkingPoints>? = null
+)
+
+data class MarkingPoints(
+    val total: Double,
+    val sentiment_points: Double,
+    val argument_points: Double
 )
 
 data class WinnerResponse(

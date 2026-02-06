@@ -3,18 +3,19 @@ DEBATE WINNER & PERFORMANCE ANALYSIS
 ============================================================
 
 User 1 PERFORMANCE SUMMARY:
-Total Score : 2.0
-POSITIVE   : 1
+Total Score : 7.0
+NEGATIVE   : 1
+Claim      : 2
+POSITIVE   : 2
 Rebuttal   : 1
 
 ----------------------------------------
 
 User 2 PERFORMANCE SUMMARY:
 Total Score : 5.0
-POSITIVE   : 1
+POSITIVE   : 2
 Claim      : 2
-NEGATIVE   : 1
 
 ----------------------------------------
 
-🏆 FINAL RESULT: User 2
+🏆 FINAL RESULT: User 1

@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
 RAW_TRANSCRIPT_STT = os.path.join(PROJECT_ROOT, "debate_transcript.txt")
 FINAL_OUTPUT_STT = os.path.join(BASE_DIR, "debate_final_analysis.txt")
 
-RAW_TRANSCRIPT_CHATBOT = os.path.join(PROJECT_ROOT, "chatbot_debate_transcript.txt")
+RAW_TRANSCRIPT_CHATBOT = os.path.join(PROJECT_ROOT, "Chatbot", "chatbot_debate_transcript.txt")
 FINAL_OUTPUT_CHATBOT = os.path.join(BASE_DIR, "chatbot_final_analysis.txt")
 
 
@@ -72,6 +72,15 @@ def analyze_debate(mode: str = "stt"):
     # -------------------------------
     with open(RAW_FILE, "r", encoding="utf-8") as f:
         raw_text = f.read()
+
+    # For chatbot mode, the transcript file can contain multiple debates
+    # separated by '============================================================'.
+    # To avoid mixing old debates, only analyze the *last* debate block.
+    if mode == "chatbot":
+        parts = [p.strip() for p in raw_text.split("============================================================") if p.strip()]
+        if parts:
+            last_block = parts[-1]
+            raw_text = "=== DEBATE GPT TRANSCRIPT ===\n\n" + last_block + "\n"
 
     # -------------------------------
     # 2.GRAMMAR CORRECTION

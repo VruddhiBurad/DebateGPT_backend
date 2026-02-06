@@ -40,11 +40,20 @@ async def transcribe_audio(
 
         transcript_file_path = os.path.abspath(TRANSCRIPT_FILE)
 
-        # When user=2, NEVER reset - always append so User 1's transcript is preserved
+        # Turn-handling:
+        # - User 1 can start/reset a debate.
+        # - User 2 should never reset/overwrite User 1; always append to existing content.
         if user == 2:
             reset = False
-
-        if reset or not os.path.exists(TRANSCRIPT_FILE):
+            full_content = _read_full_transcript()
+            # If User 2 is (unexpectedly) first and the file is missing/empty,
+            # start a minimal header rather than overwriting User 1's content.
+            if not full_content:
+                header = "========== FULL DEBATE ==========\n"
+                if topic:
+                    header += f"Topic: {topic}\n\n"
+                full_content = header
+        elif reset or not os.path.exists(TRANSCRIPT_FILE):
             header = "========== FULL DEBATE ==========\n"
             if topic:
                 header += f"Topic: {topic}\n\n"

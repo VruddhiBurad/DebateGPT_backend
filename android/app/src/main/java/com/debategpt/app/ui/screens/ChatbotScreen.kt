@@ -80,6 +80,39 @@ fun ChatbotScreen(
                         label = { Text("Against") }
                     )
                 }
+
+                // Show topic & stance summary so user sees debate setup before messages
+                if (state.topic.isNotBlank()) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                    ) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                text = "Debate setup",
+                                style = MaterialTheme.typography.labelLarge,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "Topic: ${state.topic}",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            val stanceLabel = when (state.stance) {
+                                "favor" -> "Favor"
+                                "against" -> "Against"
+                                else -> "Not selected"
+                            }
+                            Text(
+                                text = "Your stance: $stanceLabel",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
             }
 
             LazyColumn(
@@ -132,49 +165,14 @@ fun ChatbotScreen(
                 }
             }
 
-            if (state.messages.size >= 2) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(MaterialTheme.colorScheme.outlineVariant)
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    OutlinedButton(
-                        onClick = { analysisViewModel.analyzeChatbot() },
-                        enabled = !analysisState.isLoading
-                    ) {
-                        Text("Analyze")
-                    }
-                    if (analysisState.analysisSuccess) {
-                        OutlinedButton(
-                            onClick = { analysisViewModel.getWinnerChatbot() },
-                            enabled = !winnerState.isLoading
-                        ) {
-                            Text("Get Winner")
-                        }
-                    }
-                }
-                winnerState.winner?.let { winner ->
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 8.dp),
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
-                    ) {
-                        Text(
-                            "🏆 Winner: $winner",
-                            modifier = Modifier.padding(16.dp),
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                    }
-                }
-            }
+            // Analysis & winner (same rich UI as STT, reusing shared composable)
+            AnalysisTabContent(
+                canAnalyze = state.messages.size >= 2,
+                analysisState = analysisState,
+                winnerState = winnerState,
+                onRunAnalysis = { analysisViewModel.analyzeChatbot() },
+                onGetWinner = { analysisViewModel.getWinnerChatbot() }
+            )
         }
     }
 }
